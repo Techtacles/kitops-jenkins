@@ -11,7 +11,7 @@ pipeline {
 
         stage('Login to JozuHub'){
             steps {
-                sh 'Logging in complete'
+                echo 'Logging in complete'
             }
         }
     }
