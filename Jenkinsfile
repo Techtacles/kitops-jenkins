@@ -1,8 +1,15 @@
 pipeline {
     agent any 
+    environment {
+        USERNAME = credentials('USERNAME')
+        PASSWORD = credentials('PASSWORD')
+    }
     stages {
         stage('install kitops') {
             steps {
+                cleanWs()
+                git(url: 'https://github.com/Techtacles/kitops-jenkins.git', branch: 'master')
+                sh 'ls'
                 sh 'wget https://github.com/jozu-ai/kitops/releases/latest/download/kitops-linux-arm64.tar.gz'
                 sh 'tar -xzvf kitops-linux-x86_64.tar.gz'
                 sh './kit version'
@@ -11,8 +18,11 @@ pipeline {
 
         stage('Login to JozuHub'){
             steps {
-                echo 'Logging in complete'
+                sh './kit login jozu.ml -u $USERNAME -p $PASSWORD'
+                echo 'Successfully logged in to jozuhub'
             }
         }
     }
 }
+
+// kit unpack jozu.ml/jozu/qwen2-0.5b:0.5b-instruct-q2_K
