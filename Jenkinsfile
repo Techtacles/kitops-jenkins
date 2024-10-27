@@ -20,16 +20,14 @@ pipeline {
             steps {
                 sh './kit login jozu.ml -u $USERNAME -p $PASSWORD'
                 echo 'Successfully logged in to jozuhub'
-
             }
         }
 
         stage('Tagging and pushing to remote repository'){
             steps{
                 sh './kit unpack jozu.ml/jozu/qwen2-0.5b:0.5b-instruct-q2_K --model -d models/qwen2-0.5b:0.5b-instruct-q2_K.gguf'
-                sh 'cd models && ls'
-                sh './kit pack . -t jozu.ml/jozu/qwen2-0.5b:latest'
-                sh './kit push jozu.ml/jozu/qwen2-0.5b:latest'
+                sh './kit pack . -t jozu.ml/emmanueloffisongetim/jenkins_repo:latest'
+                sh './kit push jozu.ml/emmanueloffisongetim/jenkins_repo:latest'
             }
         }
     }
