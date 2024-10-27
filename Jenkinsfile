@@ -5,7 +5,6 @@ pipeline {
             steps {
                 sh 'wget https://github.com/jozu-ai/kitops/releases/latest/download/kitops-linux-x86_64.tar.gz'
                 sh 'tar -xzvf kitops-linux-x86_64.tar.gz'
-                sh 'sudo mv kit /usr/local/bin/'
                 sh 'kit version'
             }
         }
