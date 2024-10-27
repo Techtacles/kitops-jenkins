@@ -27,6 +27,7 @@ pipeline {
         stage('Tagging and pushing to remote repository'){
             steps{
                 sh './kit unpack jozu.ml/jozu/qwen2-0.5b:0.5b-instruct-q2_K --model -d models/qwen2-0.5b:0.5b-instruct-q2_K.gguf'
+                sh 'ls'
                 sh './kit pack . -t jozu.ml/jozu/qwen2-0.5b:latest'
                 sh './kit push jozu.ml/jozu/qwen2-0.5b:latest'
             }
