@@ -18,7 +18,7 @@ pipeline {
 
         stage('Login to JozuHub'){
             steps {
-                sh './kit login jozu.ml -u $USERNAME -p $PASSWORD'
+                sh './kit login jozu.ml -u $USERNAME --password-stdin $PASSWORD'
                 echo 'Successfully logged in to jozuhub'
             }
         }
