@@ -26,8 +26,8 @@ pipeline {
         stage('Tagging and pushing to remote repository'){
             steps{
                 sh './kit unpack jozu.ml/jozu/qwen2-0.5b:0.5b-instruct-q2_K --model -d models/qwen2-0_5b-instruct-q2_k.gguf'
-                sh './kit pack . -t jozu.ml/emmanueloffisongetim/jenkins_repo:latest'
-                sh './kit push jozu.ml/emmanueloffisongetim/jenkins_repo:latest'
+                sh './kit pack . -t jozu.ml/emmanueloffisongetim/qwen-openshift:latest'
+                sh './kit push jozu.ml/emmanueloffisongetim/qwen-openshift:latest'
             }
         }
     }
